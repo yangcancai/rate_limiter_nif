@@ -19,3 +19,4 @@ rebar3.crashdump
 *~
 src/*.gen
 rebar.config.gen
+crates/rate_limiter/target
