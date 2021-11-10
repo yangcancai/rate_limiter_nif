@@ -1,7 +1,7 @@
 -module(rate_limiter_nif).
 
 %% API
--export([new/0, run/6, clear/1]).  %% new resource
+-export([new/0, run/6, clear/1, delete/2]).  %% new resource
 
             %% clear resource
 
@@ -36,6 +36,10 @@ new() ->
 %% 可以根据RetryAfter来间隔多少秒可以重新获取
 %% ResetAfter代表多少秒后令牌桶会满
 run(_Ref, _Key, _Burst, _Count, _Seconds, _Quantity) ->
+    not_loaded(?LINE).
+
+-spec delete(Ref :: rate_limiter(), Key :: binary()) -> ok.
+delete(_Ref, _Key) ->
     not_loaded(?LINE).
 
 -spec clear(Ref :: rate_limiter()) -> ok.

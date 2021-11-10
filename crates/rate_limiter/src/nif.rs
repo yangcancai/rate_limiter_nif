@@ -57,6 +57,14 @@ impl NifrateLimiter {
             Cow::Borrowed(b_msg) => b_msg.to_string(),
         }
     }
+    fn clear(&mut self) {
+        let store = Store::new();
+        let rate = RateLimiter::new(store);
+        self.data = rate;
+    }
+    fn delete(&mut self, key: &[u8]) {
+        self.data.delete(self.u8_to_string(key));
+    }
     fn run(
         &mut self,
         key: &[u8],
@@ -116,8 +124,13 @@ fn run<'a>(
     }
 }
 #[rustler::nif]
+fn delete<'a>(env: Env<'a>, resource: ResourceArc<NifrateLimiterResource>, key: LazyBinary<'a>) -> NifResult<Term<'a>> {
+    resource.write().delete(&key);
+    Ok(ok().encode(env))
+}
+#[rustler::nif]
 fn clear(env: Env, resource: ResourceArc<NifrateLimiterResource>) -> NifResult<Term> {
-    drop(resource);
+    resource.write().clear();
     Ok(ok().encode(env))
 }
 // =================================================================================================

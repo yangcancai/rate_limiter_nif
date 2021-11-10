@@ -60,7 +60,7 @@ dependencies = [
 [[package]]
 name = "rate_limiter"
 version = "0.1.0"
-source = "git+https://github.com/yangcancai/rate_limiter.git?branch=master#503b69a6a91356e0a89bd6b46e96113c081415ac"
+source = "git+https://github.com/yangcancai/rate_limiter.git?branch=master#0e21df2a9a3481a1dc9531b48e0693d3a48989b9"
 dependencies = [
  "time",
 ]

@@ -31,6 +31,6 @@ mod nif;
 // define nif api
 rustler::init!(
     "rate_limiter_nif",
-    [nif::new, nif::clear, nif::run,],
+    [nif::new, nif::clear, nif::run, nif::delete,],
     load = nif::on_load
 );
