@@ -1,0 +1,16 @@
+{application, rate_limiter_nif,
+ [{description, "An OTP application"},
+  {vsn, "cat from VERSION"},
+  {registered, []},
+  {mod, {rate_limiter_nif_app, []}},
+  {applications,
+   [kernel,
+    stdlib
+   ]},
+  {env,[]},
+  {modules, []},
+
+  {licenses, ["Apache 2.0"]},
+  {links, []}
+ ]}.
+
